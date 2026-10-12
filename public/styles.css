@@ -20,16 +20,10 @@
 .links-page .link-row.chase-on:before{opacity:1}
 .links-page .link-row.chase-on>span{color:rgb(var(--chase-color));text-shadow:0 0 16px rgba(var(--chase-color),.3)}
 @media(prefers-reduced-motion:reduce){.links-page .link-row,.links-page .link-row:before,.links-page .link-row>span{transition:none}}
-/* Plata inicial, blanco y un barrido cromático continuo. */
-.hero h1 span{display:inline-block;background-size:100% 100%;animation:title-light 12s ease-in-out infinite}
-@keyframes title-light{
-0%,15%,100%{background-image:linear-gradient(175deg,#fff 10%,#d7d8df 30%,#666775 48%,#f2f2f6 58%,#a3a5b3 80%);background-size:100% 100%;background-position:0% 50%;color:transparent}
-25%,35%{background-image:linear-gradient(#fff,#fff);background-size:100% 100%;background-position:0% 50%;color:transparent}
-45%{background-image:linear-gradient(110deg,#bcefff,#c2b7ff,#ffb7db,#fff,#bcefff);background-size:300% 100%;background-position:0% 50%;color:transparent}
-65%{background-image:linear-gradient(110deg,#bcefff,#c2b7ff,#ffb7db,#fff,#bcefff);background-size:300% 100%;background-position:100% 50%;color:transparent}
-80%{background-image:linear-gradient(110deg,#bcefff,#c2b7ff,#ffb7db,#fff,#bcefff);background-size:300% 100%;background-position:0% 50%;color:transparent}
-90%{background-image:linear-gradient(#fff,#fff);background-size:100% 100%;color:transparent}
-}
+/* Un solo degradado: compatible con navegadores móviles. */
+.hero h1 span,.closing h2 span{display:inline-block;background-image:linear-gradient(110deg,#b0b2c1 0%,#fff 8%,#76798b 14%,#e5e6ed 20%,#fff 30%,#fff 42%,#88dfff 53%,#c0a0ff 62%,#ff91c4 71%,#8ce8df 82%,#c0a0ff 91%,#fff 100%);background-size:500% 100%;background-position:0% 50%;background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:chrome-flow 9s ease-in-out infinite}
+@keyframes chrome-flow{0%,10%,100%{background-position:0% 50%}25%,32%{background-position:38% 50%}55%{background-position:70% 50%}75%{background-position:100% 50%}88%{background-position:60% 50%}}
+.closing h2 span{animation-play-state:paused}.closing h2 span.title-visible{animation-play-state:running}
 .nav nav{align-items:center;flex-shrink:0}.nav nav a{display:inline-flex;align-items:center;white-space:nowrap;line-height:1.4}
 @media(max-width:700px){.nav{gap:12px}.nav nav{gap:14px}.nav nav a{font-size:10px}.nav .brand{gap:8px}.nav .brand span{letter-spacing:.7px}}
-@media(prefers-reduced-motion:reduce){.hero h1 span{animation:none}}
+@media(prefers-reduced-motion:reduce){.hero h1 span,.closing h2 span{animation-duration:18s}}

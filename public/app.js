@@ -20,6 +20,14 @@ const year = document.getElementById('year');
 if (year) year.textContent = new Date().getFullYear();
 
 const cards = document.querySelectorAll('.card');
+const energyTitle = document.querySelector('.closing h2 span');
+if (energyTitle && 'IntersectionObserver' in window) {
+  new IntersectionObserver(entries => {
+    entries.forEach(entry => entry.target.classList.toggle('title-visible', entry.isIntersecting));
+  }, { threshold: 0.5 }).observe(energyTitle);
+} else if (energyTitle) {
+  energyTitle.classList.add('title-visible');
+}
 if ('IntersectionObserver' in window) {
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => entry.target.classList.toggle('is-visible', entry.isIntersecting));
