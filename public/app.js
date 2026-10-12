@@ -28,3 +28,34 @@ if ('IntersectionObserver' in window) {
 } else {
   cards.forEach(card => card.classList.add('is-visible'));
 }
+
+// Chase: ida, vuelta, impares, pares y una pausa plateada.
+if (list) {
+  const links = [...list.querySelectorAll('.link-row')];
+  const steps = [
+    [], ...links.map((_, i) => [i]),
+    ...links.map((_, i) => [links.length - 1 - i]).slice(1),
+    [], links.map((_, i) => i).filter(i => i % 2 === 0),
+    links.map((_, i) => i).filter(i => i % 2 === 1), []
+  ];
+  const colors = ['130,165,255', '189,145,255', '255,135,193', '113,223,240', '144,231,189'];
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  let step = 0, timer;
+  const clear = () => links.forEach(link => link.classList.remove('chase-on'));
+  const tick = () => {
+    clear();
+    steps[step].forEach(index => {
+      links[index].style.setProperty('--chase-color', colors[(step + index) % colors.length]);
+      links[index].classList.add('chase-on');
+    });
+    step = (step + 1) % steps.length;
+    timer = setTimeout(tick, 850);
+  };
+  const sync = () => {
+    clearTimeout(timer); clear(); step = 0;
+    if (!document.hidden && !reducedMotion.matches) tick();
+  };
+  document.addEventListener('visibilitychange', sync);
+  reducedMotion.addEventListener('change', sync);
+  sync();
+}

@@ -11,3 +11,12 @@
 .card-cta{display:block;font-size:10px;line-height:1.6;margin-top:22px;color:#d6d6de;position:relative}
 @media(hover:hover){.card:hover{border-color:rgb(var(--accent));box-shadow:0 0 32px rgba(var(--accent),.14)}.card:hover:before{opacity:1}.card:hover .symbol,.card:hover h3{color:rgb(var(--accent))}}
 @media(prefers-reduced-motion:reduce){.card:before{transition:none}}
+/* Plata en reposo; reflejos RGB en un chase secuencial. */
+.links-page .link-row{--chase-color:130,165,255;position:relative;isolation:isolate;overflow:hidden;color:#f0f0f5;border-color:#ffffff28;background:linear-gradient(115deg,#32333c 0%,#15161c 38%,#282a33 60%,#16171e 100%);box-shadow:inset 0 1px 0 #ffffff15;transition:border-color .6s,box-shadow .6s,transform .2s}
+.links-page .link-row small{color:#b5b6c0}
+.links-page .link-row:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(115deg,rgba(var(--chase-color),.3),rgba(var(--chase-color),.04) 38%,rgba(var(--chase-color),.24) 60%,rgba(var(--chase-color),.06));opacity:0;transition:opacity .6s}
+.links-page .link-row>span{color:#c8cad5;transition:color .6s,text-shadow .6s}
+.links-page .link-row.chase-on{border-color:rgba(var(--chase-color),.65);box-shadow:inset 0 1px 0 #ffffff30,0 0 24px rgba(var(--chase-color),.15)}
+.links-page .link-row.chase-on:before{opacity:1}
+.links-page .link-row.chase-on>span{color:rgb(var(--chase-color));text-shadow:0 0 16px rgba(var(--chase-color),.3)}
+@media(prefers-reduced-motion:reduce){.links-page .link-row,.links-page .link-row:before,.links-page .link-row>span{transition:none}}
