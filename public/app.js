@@ -1,8 +1,8 @@
 // Completar solo con datos confirmados del negocio.
-const CONTACTS = { whatsapp: '', tiktok: 'https://www.tiktok.com/', facebook: 'https://www.facebook.com/' };
+const CONTACTS = { whatsapp: '51931505279', tiktok: 'https://www.tiktok.com/', facebook: 'https://www.facebook.com/' };
 if (CONTACTS.whatsapp) {
-  const url = `https://wa.me/${CONTACTS.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent('Hola AC Producciones, quisiera cotizar un evento.')}`;
-  document.querySelectorAll('.contact').forEach(link => { link.href = url; });
+  const url = `https://wa.me/${CONTACTS.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent('hola, me interesa este servicio.')}`;
+  document.querySelectorAll('.contact, .service-contact').forEach(link => { link.href = url; });
   const label = document.querySelector('.featured div');
   if (label) label.innerHTML = 'WhatsApp<small>Cotiza tu evento</small>';
 }
@@ -18,3 +18,13 @@ for (const [name, url] of [['TikTok', CONTACTS.tiktok], ['Facebook', CONTACTS.fa
 }
 const year = document.getElementById('year');
 if (year) year.textContent = new Date().getFullYear();
+
+const cards = document.querySelectorAll('.card');
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => entry.target.classList.toggle('is-visible', entry.isIntersecting));
+  }, { threshold: 0.35, rootMargin: '0px 0px -8% 0px' });
+  cards.forEach(card => observer.observe(card));
+} else {
+  cards.forEach(card => card.classList.add('is-visible'));
+}

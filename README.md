@@ -7,7 +7,7 @@ Redes: https://acprod.web.app/redes
 
 Firebase: proyecto tesen-factory-admin, sitio independiente acprod.
 
-Los archivos están en public/. Completar los contactos en public/app.js. TikTok y Facebook llevan provisionalmente a sus páginas principales; el contacto lleva a Instagram. El monograma AC es provisional hasta recibir el logo oficial.
+Los archivos están en public/. Completar los contactos en public/app.js. TikTok y Facebook llevan provisionalmente a sus páginas principales; el contacto lleva a WhatsApp +51 931 505 279. El monograma AC es provisional hasta recibir el logo oficial.
 
 Para publicar, con Node.js y acceso al proyecto:
 
